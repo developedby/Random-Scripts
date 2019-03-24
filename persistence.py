@@ -1,3 +1,7 @@
+# persistence.py - functions for calculating persistence of numbers
+# Inspired by the numberphile video about 277777788888899
+
+# Calculates the persistence of a given number 'n' recursively
 def persistence(n, n_steps=0, print_steps=False):
     if print_steps:
         print(n_steps, n)
@@ -10,6 +14,8 @@ def persistence(n, n_steps=0, print_steps=False):
             n //= 10
         return persistence(new_n, n_steps+1, print_steps)
         
+# Calculates the persistence of all numbers between 'start' and 'end'
+# Return the smallest number that has the largest persistence found
 def check_persistence_in_range (start, end, print_steps=False, print_all_persistence=False, print_new_persistence=False):
     i = start
     largest_persistence = 0
