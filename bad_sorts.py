@@ -4,7 +4,7 @@ from typing import Callable
 import numpy as np
 
 
-NUM_ELEMENTS = 6
+NUM_ELEMENTS = 10
 
 # Auxiliary functions
 def do_sort(
@@ -52,10 +52,9 @@ def random_guess_sort(arr: np.ndarray) -> np.ndarray:
         for i, element in enumerate(arr):
             pos_guess_arr[i] = np.random.randint(0, len(arr))
 
-        # Check if the guesses are valid
+        # Check if there are repeated guesses
         valid_guess = True
         for i, guess in enumerate(pos_guess_arr):
-            # Check if the guesses occur more than once
             if len(pos_guess_arr[pos_guess_arr == guess]) > 1:
                 valid_guess = False
                 break
@@ -122,9 +121,9 @@ def bubble_sort(arr: np.ndarray) -> np.ndarray:
 if __name__ == "__main__":
     arr = np.random.rand(NUM_ELEMENTS)
 
-    do_sort(random_guess_sort, "Random Guess Sort", arr)
-    do_sort(random_pancake_sort, "Random Pancake Sort", arr)
-    do_sort(bogo_sort, "Bogo Sort", arr)
-    do_sort(random_swap_sort, "Random Swap Sort", arr)
-    do_sort(slow_sort, "Slowsort", arr)
     do_sort(bubble_sort, "Bubble Sort", arr)
+    do_sort(slow_sort, "Slowsort", arr)
+    do_sort(random_swap_sort, "Random Swap Sort", arr)
+    do_sort(bogo_sort, "Bogo Sort", arr)
+    do_sort(random_pancake_sort, "Random Pancake Sort", arr)
+    do_sort(random_guess_sort, "Random Guess Sort", arr)
