@@ -21,6 +21,7 @@ def do_sort(
     total_time = time.time() - start_time
     print("Seconds taken:", total_time)
     print("")
+    return total_time
 
 def is_non_increasing_array(arr: np.ndarray) -> bool:
     """Returns if the array is non-increasing"""
@@ -74,6 +75,7 @@ def bogo_sort(arr: np.ndarray) -> np.ndarray:
     return arr
 
 def slow_sort(arr: np.ndarray) -> np.ndarray:
+    # https://en.wikipedia.org/wiki/Slowsort
     def slow_sort_recursive(arr, i, j):
         if i >= j:
             return
@@ -106,6 +108,16 @@ def random_pancake_sort(arr: np.ndarray) -> np.ndarray:
         arr[:flip_idx] = np.flip(arr[:flip_idx])
     return arr
 
+def bubble_sort(arr: np.ndarray) -> np.ndarray:
+    # https://en.wikipedia.org/wiki/Bubble_sort
+    for i in range(len(arr)-1):
+        for j in range(len(arr)-i-1):
+            if arr[j+1] < arr[j]:
+                swap = arr[j]
+                arr[j] = arr[j+1]
+                arr[j+1] = swap
+    return arr
+
 
 if __name__ == "__main__":
     arr = np.random.rand(NUM_ELEMENTS)
@@ -114,4 +126,5 @@ if __name__ == "__main__":
     do_sort(random_pancake_sort, "Random Pancake Sort", arr)
     do_sort(bogo_sort, "Bogo Sort", arr)
     do_sort(random_swap_sort, "Random Swap Sort", arr)
-    do_sort(slow_sort, "Slow Sort", arr)
+    do_sort(slow_sort, "Slowsort", arr)
+    do_sort(bubble_sort, "Bubble Sort", arr)
