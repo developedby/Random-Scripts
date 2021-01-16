@@ -2,12 +2,11 @@
 import os
 from pathlib import Path
 
-COLUMN_SPACE = 50
 
 print('Script to rename Bandcamp songs downloaded through youtube-dl')
 
-path = Path(input('Please insert the path to folder where the songs are: '))
-os.chdir(path)
+folder = Path(input('Please insert the path to folder where the songs are: '))
+os.chdir(folder)
 old_names = os.listdir('.')
 
 print('\nFound the following files:')
